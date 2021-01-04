@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
+
+    // notar que essa api não faz a aplicação rodar, apenas valida as annotations
+    // https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
+    // compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
+    // === Necessários para a parte 2 do curso. Essas sao as implementacoes do JPA (Hibernate e EclipseLink) e o automatizador de criacao de Metamodels ===
+
+    // Implementacao Hibernate
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.27.Final'
+
+    // Implementacao EclipseLink
+    // https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink
+    compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '3.0.0'
+
+    // Automatizador de criacao de Metamodels
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen
+    annotationProcessor('org.hibernate:hibernate-jpamodelgen:5.4.27.Final')
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
